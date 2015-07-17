@@ -1,0 +1,7 @@
+1.GERRIT_TRIGGER_DOCKER:slave
+2.TEST_EXECUTION_UT_DOCKER:Docker machine
+3.TEST_EXECUTION_FT_DOCKER:Docker machine
+4.GITSYNC_DOCKER:Slave
+5.IMAGECREATION_DOCKER:needs to be executed where "imagecreation scripts" are placed
+6.APPLICATION_DEPLOYMENT:needs to be executed on Capastrino installed machine
+

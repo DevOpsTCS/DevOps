@@ -1,0 +1,5 @@
+IN capistrano/config/deploy.rb Change the below DETAILS
+
+set :repository, "GITLAB REPO"
+set :deploy_to, "DESTRINATIONFOLDER"
+role :app, "DESTINATION_IP" # This may be the same as your web server.
