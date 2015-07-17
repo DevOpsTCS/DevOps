@@ -1,0 +1,18 @@
+heat_template_version: 2013-05-23
+description: A Template to upload image into glance.
+parameters:
+    location_path:
+        type: string
+        description: Please specify the location path of the image.
+    name:
+        type: string
+        description: Please specify the name of the image.
+resources:
+    glance_image:
+        type: OS::Glance::Image
+        properties:
+            container_format: bare
+            disk_format: qcow2
+            is_public: True
+            location: { get_param: location_path }
+            name: { get_param: name }
