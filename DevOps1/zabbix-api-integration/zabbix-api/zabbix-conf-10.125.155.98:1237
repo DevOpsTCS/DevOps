@@ -1,0 +1,6 @@
+AUTH : 2b2a29e02395b4b9bb368d44b45de676
+HOSTID : 10084
+APPID : 
+HTTPTESTID : Usage : /home/tcs/zabbix-api-integration/zabbix-api/zabbix-create-web-scenarios.sh <APP ID> <IP ADDRESS> <AUTH> <HOST ID>
+TRIGGERID : 
+ACTIONID : 9
