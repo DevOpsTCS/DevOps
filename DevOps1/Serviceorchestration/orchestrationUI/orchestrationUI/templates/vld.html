@@ -1,0 +1,52 @@
+<style>
+ul {
+ list-style-type: square;
+ list-style-position: outside;
+ list-style-image: none;
+}
+li
+{
+   font-size:18; 
+   font-family: Georgia,Times,Times New Roman,serif;
+}
+#test
+{
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;  
+    font-family: "Times New Roman", Times, serif;
+    color:#339999;
+}
+
+
+
+</style>
+
+{% extends 'index.html' %}
+
+{% block main %}
+ 
+<h2><div id="test">
+VLD DESCRIPTION
+</div>
+</h2>
+<br>
+<ul>
+<li>The VLD provides a description of each Virtual Link. </li>
+<li>This type of information can be used by the NFVO to determine 
+the appropriate placement of a VNF instance.</li>
+<li>The VIM responsible for managing the virtualised resources of the
+ selected placement to determine the allocation of required virtualised resources on a host with adequate network
+
+infrastructure. </li>
+<li>The VIM, or another Network Controller, can also use this information to establish the appropriate paths
+ and VLANs.</li>
+<li>The VLD describes the basic topology of the connectivity (e.g. E-LAN, E-Line, E-Tree) between one or more VNFs
+ connected to this VL and other required parameters (e.g. bandwidth and QoS class). </li>
+<li>The VLD connection parameters
+ are expected to have similar attributes to those used on the ports on VNFs in ETSI GS NFV-SWA 001 [i.8]. Therefore a
+ set of VLs in a Network Service can be mapped to a Network Connectivity Topology (NCT) as defined in
+ ETSI GS NFV-SWA 001 </li>
+</ul>
+
+ {% endblock %}

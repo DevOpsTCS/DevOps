@@ -1,0 +1,29 @@
+#!/bin/bash
+vmcount=0
+while read line;
+do
+prev_host=`grep -i "<host>" node1.xml | cut -d '<' -f 2 | awk -F'>' '{print $2}'`
+#echo $prev_host
+
+if [ ! "$line" ];then
+   continue
+fi
+echo $prev_host
+sed -i 's/'$prev_host'/'$line'/g' node1.xml
+vmcount=`expr $vmcount + 1`
+echo $vmcount
+#echo "\n"
+done < vm_iplist.txt
+
+for ((i=1; i<=$vmcount; i++));
+do
+    name=Unittest.$i
+    prev_name=`grep "<name>" node1.xml | cut -d '<' -f 2 | awk -F'>' '{print $2}'`
+    echo $prev_name
+    sed -i  's/'$prev_name'/'$name'/g' node1.xml
+    cat node1.xml | java -jar ~/var/lib/jenkins/jenkins-cli.jar -s http://10.125.155.107:9090/ create-node
+    sleep 5
+    [ `grep -i "<values/>" ~/var/lib/jenkins/jobs/testing/config.xml` ]  && sed -i "s/<values\/>/<values>\n\t<\/values>/g" ~/var/lib/jenkins/jobs/testing/config.xml
+    sed -i '/<values>/a \\t<string>'$name'</string>' ~/var/lib/jenkins/jobs/testing/config.xml | tee -a slavename.txt
+done
+

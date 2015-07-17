@@ -1,0 +1,36 @@
+{
+"AWSTemplateFormatVersion" : "2010-09-09",
+"Description" : "Sample Heat template that spins up multiple instances and a private network (JSON)",
+"Resources" : {
+"heat_network_01" : {
+"Type" : "OS::Neutron::Net",
+"Properties" : {
+"name" : "heat-network-01"
+}
+},
+ 
+"heat_subnet_01" : {
+"Type" : "OS::Neutron::Subnet",
+"Properties" : {
+"name" : "heat-subnet-01",
+"cidr" : "10.10.10.0/24",
+"enable_dhcp" : "True",
+"gateway_ip" : "10.10.10.254",
+"network_id" : { "Ref" : "heat_network_01" }
+}
+},
+ 
+ 
+"instance1" : {
+"Type" : "OS::Nova::Server",
+"Properties" : {
+"name" : "heat-instance-02",
+"image" : "9c3e6237-9cff-41f3-b3b7-2533f9ece797",
+"flavor": "m1.tiny",
+"networks" : [{
+"network" : { "Ref" : "heat_network_01" }
+}]
+}
+}
+}
+} 

@@ -1,0 +1,17 @@
+heat_template_version: 2013-05-23
+
+description: Simple template to deploy a single compute instance
+parameters:
+  image_id:
+    type: string
+    label: Image ID
+    description: Image to be used for compute instance
+
+resources:
+  my_instance:
+    type: OS::Nova::Server
+    properties:
+      name: vm5888
+      image: { get_param: image_id }
+      flavor: m1.tiny
+      networks: [{ network : 041c8b01-cd23-461f-8b07-4c447f4c734c }]

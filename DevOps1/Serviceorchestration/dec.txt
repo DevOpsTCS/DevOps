@@ -1,0 +1,43 @@
+*** Settings ***    Value
+Suite Setup         System Login
+Suite Teardown      Close All Connections 
+Library             String
+Library             Selenium2 Library
+Library             SSH Library
+Library             Operating System
+Library             app.views
+*** Variables ***   Value
+@{host}             @{host_ip}
+@{user}             tcs
+@{password}         tcs@12345
+@{host_IP}          PLACEHOLDER
+*** Test Cases ***
+Testcase1 Onboard
+    Start Process    python /home/tcs/Serviceorchestration/run.py 
+    Sleep    3
+    ${a}=    Execute Command    source ~/creds;curl -X POST -F nsd_file=@/home/tcs/Serviceorchestration/tester.yaml -L http://PLACEHOLDER:5070/on-board-nsd
+    log to console    ${a}
+Testcase2 Enable
+    ${b}=    Execute Command    source ~/creds;curl -X POST -F nsd_name_version=tester.yaml_1.0 -L http://PLACEHOLDER:5070/enable-nsd
+    log to console    ${b}
+Testcase3 Disable
+    ${b}=    Execute Command    source ~/creds;curl -X POST -F nsd_name_version=tester.yaml_1.0 -L http://PLACEHOLDER:5070/disable-nsd
+    log to console    ${b}
+Testcase4 Query
+    ${b}=    Execute Command    source ~/creds;curl -X POST -F nsd_name_version=tester.yaml_1.0 -L http://PLACEHOLDER:5070/query-nsd
+    log to console    ${b}
+Testcase5 Update
+    ${b}=    Execute Command    source ~/creds;curl -X POST -F nsd_file=@/home/tcs/Serviceorchestration/tester.yaml -L http://PLACEHOLDER:5070/update-nsd
+    log to console    ${b}
+    ${c}=    Execute Command    source ~/creds;curl -X POST -F nsd_name_version=tester.yaml_2.0 -L http://PLACEHOLDER:5070/query-nsd
+    log to console    ${c}
+Testcase6 Delete
+    ${b}=    Execute Command    source ~/creds;curl -X POST -F nsd_name_version=tester.yaml_1.0 -L http://PLACEHOLDER:5070/delete-nsd
+    log to console    ${b}
+    ${c}=    Execute Command    source ~/creds;curl -X POST -F nsd_name_version=tester.yaml_2.0 -L http://PLACEHOLDER:5070/delete-nsd
+    log to console    ${c}
+    Execute Command    sudo fuser -k 5070/tcp   
+*** Keywords ***
+System Login
+    Open Connection    @{host}    8080
+    Login    @{user}    @{password}

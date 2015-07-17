@@ -1,0 +1,13 @@
+heat_template_version: 2013-05-23 
+
+description: Simple template to deploy a single compute instance 
+
+resources:
+  my_instance:
+    type: OS::Nova::Server
+    properties:
+      name: vm8
+      image: 6c70012d-c270-4e98-ab22-ae6f273278f4 
+      flavor: m1.tiny
+      networks: [{ network : 041cf03c-2530-49f5-9e78-1e8f3b8f3ba8 }]
+

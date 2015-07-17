@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% block main %}
+<br><br><br><br><br><br>
+<div  class="center" id="vnfd_form">
+<form action="createVNF" enctype="multipart/form-data" method="post">
+    {% csrf_token %} 
+    <h4>
+    Please fill all the texts in the fields.
+    </h4>
+    <table>
+    <tr><td>
+    <label>
+        <span>Vnfd :</span></td><td> {{ form.name }}</td>
+    </label>
+    </tr>
+   
+    <tr><td>  
+    <label>
+        <span>Description:</span></td><td> {{ form.description}} <td>
+        
+    </label>
+    </tr>
+    <tr><td>
+    <label>
+        <span>File:&nbsp;&nbsp;&nbsp;</span></td><td> {{ form.file_name }} <td>
+    </label>
+    </tr>
+    <tr><td>
+    <label>
+        <span>&nbsp;</span>
+        <input type="reset" value="Reset" />
+    </label>
+    </td><td>
+    <label>
+        <span>&nbsp;</span>
+        <input type="submit" class="button" value="ONBOARD" />
+    </label>
+    </td></tr>
+    <table>    
+</form
+
+</div>
+{% endblock %}

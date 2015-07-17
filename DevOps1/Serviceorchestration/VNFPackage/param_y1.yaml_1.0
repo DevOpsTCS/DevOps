@@ -1,0 +1,73 @@
+{
+"AWSTemplateFormatVersion" : "2010-09-09",
+"Description" : "Sample Heat template that spins up multiple instances and a private network (JSON)",
+"Resources" : {
+"heat_network_01" : {
+"Type" : "OS::Neutron::Net",
+"Properties" : {
+"name" : "heat-network-01"
+}
+},
+
+
+"Parameters" : {
+"InstanceTypeParameter" : {
+"Type" : "String",
+"Default" : "1ef0d198-59f0-4a0d-b3c4-dd1fee0ce0cb",
+"Description" : "Enter image_id."
+}
+},
+
+
+"heat_subnet_01" : {
+"Type" : "OS::Neutron::Subnet",
+"Properties" : {
+"name" : "heat-subnet-01",
+"cidr" : "10.10.10.0/24",
+"enable_dhcp" : "True",
+"gateway_ip" : "10.10.10.254",
+"network_id" : { "Ref" : "heat_network_01" }
+}
+},
+
+"heat_router_01" : {
+"Type" : "OS::Neutron::Router",
+"Properties" : {
+"admin_state_up" : "True",
+"name" : "heat-router-01"
+}
+},
+
+
+"heat_router_int0" : {
+"Type" : "OS::Neutron::RouterInterface",
+"Properties" : {
+"router_id" : { "Ref" : "heat_router_01" },
+"subnet_id" : { "Ref" : "heat_subnet_01" }
+}
+},
+
+"instance0_port0" : {
+"Type" : "OS::Neutron::Port",
+"Properties" : {
+"admin_state_up" : "True",
+"network_id" : { "Ref" : "heat_network_01" },
+"security_groups" : ["67ef7b50-8f1e-4440-876f-84a1a032d623"]
+}
+},
+
+
+"instance0" : {
+"Type" : "OS::Nova::Server",
+"Properties" : {
+"name" : "heat-instance-01",
+"image" : { "Ref" : "InstanceTypeParameter" },
+"flavor": "m1.tiny",
+"networks" : [{
+"port" : { "Ref" : "instance0_port0" }
+}]
+}
+}
+}
+}
+

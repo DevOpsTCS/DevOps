@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# File is not in use in this project
+
+while read line;
+do
+count=1
+name=Unittest.$count|tee -a namelist.txt
+prev_host=`grep -i "<host>" ~/var/lib/jenkins/devops/node1.xml | cut -d '<' -f 2 | awk -F'>' '{print $2}'`
+
+if [ ! "$line" ];then
+   continue
+fi
+echo $prev_host
+
+sed -i 's/'$prev_host'/'$line'/g' ~/var/lib/jenkins/devops/node1.xml
+prev_name=`grep "<name>" ~/harsha/node1.xml | cut -d '<' -f 2 | awk -F'>' '{print $2}'`
+echo $prev_name
+sed -i  's/'$prev_name'/'$name'/g' ~/var/lib/jenkins/devops/node1.xml
+
+cat node1.xml | java -jar jenkins-cli.jar -s http://10.125.155.107:9090/ create-node
+sleep 5
+[ `grep -i "<values/>" config.xml` ]  && sed -i "s/<values\/>/<values>\n\t<\/values>/g" ~/var/lib/jenkins/jobs/tres/config.xml
+sed -i '/<values>/a \\t<string>'$name'</string>' ~/var/lib/jenkins/jobs/tres/config.xml
+count=`expr $count + 1`  
+echo "\n"
+done < vm_iplist.txt
+

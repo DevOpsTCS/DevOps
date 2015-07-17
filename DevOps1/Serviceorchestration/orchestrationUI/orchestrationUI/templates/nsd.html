@@ -1,0 +1,44 @@
+<style>
+ul {
+ list-style-type: square;
+ list-style-position: outside;
+ list-style-image: none;
+}
+li
+{
+   font-size:20; 
+   font-family: Georgia,Times,Times New Roman,serif;
+}
+#test
+{
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;  
+    font-family: "Times New Roman", Times, serif;
+    color:#339999;
+}
+
+
+
+</style>
+
+{% extends 'index.html' %}
+
+{% block main %}
+ 
+<h2><div id="test">
+NSD DESCRIPTION
+</div>
+</h2>
+<br><br>
+<ul>
+<li>The Network Service Descriptor (NSD) consists of static information regarding  nsd base element,Connection Point,Service deployment flavour</li>
+<li>It is used by the NFV</li>
+Orchestrator to instantiate a Network Service, which would be formed by one or more VNF Forwarding Graphs, VNFs,
+PNFs and VLs. 
+<li>The NSD also describes deployment flavours of Network Service. </li>
+
+<li>Nsd is Network service descriptor</li>
+</ul>
+
+ {% endblock %}
