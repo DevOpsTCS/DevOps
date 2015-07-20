@@ -1,1 +1,3 @@
 Please refer launch_machine.conf file for "paths ,ips other configuration details"
+Jenkins "5.image creation " job calls this launch machine.sh 
+
