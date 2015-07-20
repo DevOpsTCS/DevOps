@@ -1,0 +1,10 @@
+Go through the prerequisites.txt and install the necessary applications.
+
+Read the Instructions.doc and install the necessary plugins in Jenkins and configure them.
+
+Open the program jenkins_create_job.py and edit the Jenkins URL in 5th line and the path where this folder is placed in your system in the 6th line.
+Execute the program in the command line by typing the following line:
+>>> python jenkins_create_job.py
+
+Check in Jenkins if the jobs have been created.
+

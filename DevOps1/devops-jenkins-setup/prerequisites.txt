@@ -15,4 +15,5 @@ https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 //Install gerrit
 https://gerrit-review.googlesource.com/Documentation/install-quick.html
 
-
+//Install OpenStack
+//Install KVM
