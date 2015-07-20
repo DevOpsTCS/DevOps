@@ -1,0 +1,67 @@
+{% load staticfiles %}
+<html>
+<head>
+<script>
+
+function test(a,b)
+{
+   for( i=1 ; i<9; i++)
+   {
+        document.getElementById(i).className='deactive';
+   } 
+   
+   myWindow=window.open(a,"Ratting","width=1050,height=550,left=150,top=200,toolbar=0,status=0,scrollbars=yes,");
+   document.getElementById(b).className='active';
+   function checkWindow() 
+   {
+   if (myWindow && myWindow.closed) 
+   {
+        window.clearInterval(intervalID);
+        document.getElementById(b).className='deactive';
+   }
+   }
+   var intervalID = window.setInterval(checkWindow, 500);
+  
+}
+
+</script>
+<link rel="stylesheet" type="text/css" href="{% static 'ravi_style.css' %}" />
+</head>
+<body>
+<div id="parent">
+   <div id="devops-main">
+   <div id="devopsblend">
+   </div>
+   
+   <h1 style="text-align:left;font-family: Arial; font-size:50px;margin-left:5em;color:#660066; ">DevOps Platform</h1>
+   <h5 style="font-family: Arial;margin-left:33em;color:#993333; font-style:italic "> The convergence of people, processes and tools to enable Business Agility </h5>
+   </div>
+   <div id="menu">
+   <br>
+  
+ <a id="1" onClick='window.open("http://REDMINE/redmine/issues","Ratting","width=1050,height=550,left=150,top=200,toolbar=0,status=0,scrollbars=yes,")'>Requirements/Issue management</a>
+ <a id="2" onClick='window.open("http://GITLAB/root/Serviceorchestration/tree/master","Ratting","width=1050,height=550,left=150,top=200,toolbar=0,status=0,scrollbars=yes,")'>  Version Control </a>
+ <a id="3" onClick='window.open("http://JENKINS:9090/view/DOCKER","Ratting","width=1050,height=550,left=150,top=200,toolbar=0,status=0,scrollbars=yes,")'> Build Management </a>
+ <a id="4" onClick='window.open("http://GERRIT:8090/   ","Ratting","width=1050,height=550,left=150,top=200,toolbar=0,status=0,scrollbars=yes,")'> Review</a>
+ <a id="5" onClick='window.open("http://JENKINS:9090/job/3.TEST_EXECUTION_FT_SO/","Ratting","width=1050,height=550,left=150,top=200,toolbar=0,status=0,scrollbars=yes,")'>Test Management</a>
+ <a id="6" onClick='window.open("http://RELEASEMANAGEMENT:8888","Ratting","width=1050,height=550,left=150,top=200,toolbar=0,status=0,scrollbars=yes,")'> Release Management </a>
+ <a id="7" onClick='window.open("http://ZABBIX/zabbix/httpmon.php?ddreset=1&sid=04502e9aaf653d00","Ratting","width=1050,height=550,left=150,top=200,toolbar=0,status=0,scrollbars=yes,")'>Monitoring</a>
+
+
+
+
+
+
+</div>
+
+</div>
+ 
+<div id="main">
+</div> 
+<div id="footer">
+<div style="margin-left:15em;margin-top:2px">
+Copyright © 2015 Tata Consultancy Services 
+</div>
+</div>
+</body>
+</html>

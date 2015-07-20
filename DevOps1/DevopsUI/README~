@@ -1,0 +1,21 @@
+
+
+
+DevopsUI/DevopsUI/ravi_ui.html
+
+change the below ips with the actual ips of your installations:
+REDMINE
+GITLAB
+JENKINS
+GERRIT
+RELEASEMANAGEMENT
+ZABBIX
+
+<a id="1" onClick='window.open("http://REDMINE/redmine/issues","Ratting","width=1050,height=550,left=150,top=200,toolbar=0,status=0,scrollbars=yes,")'>Requirements/Issue management</a>
+ <a id="2" onClick='window.open("http://GITLAB/root/Serviceorchestration/tree/master","Ratting","width=1050,height=550,left=150,top=200,toolbar=0,status=0,scrollbars=yes,")'>  Version Control </a>
+ <a id="3" onClick='window.open("http://JENKINS:9090/view/DOCKER","Ratting","width=1050,height=550,left=150,top=200,toolbar=0,status=0,scrollbars=yes,")'> Build Management </a>
+ <a id="4" onClick='window.open("http://GERRIT:8090/   ","Ratting","width=1050,height=550,left=150,top=200,toolbar=0,status=0,scrollbars=yes,")'> Review</a>
+ <a id="5" onClick='window.open("http://JENKINS:9090/job/3.TEST_EXECUTION_FT_SO/","Ratting","width=1050,height=550,left=150,top=200,toolbar=0,status=0,scrollbars=yes,")'>Test Management</a>
+ <a id="6" onClick='window.open("http://RELEASEMANAGEMENT:8888","Ratting","width=1050,height=550,left=150,top=200,toolbar=0,status=0,scrollbars=yes,")'> Release Management </a>
+ <a id="7" onClick='window.open("http://ZABBIX/zabbix/httpmon.php?ddreset=1&sid=04502e9aaf653d00","Ratting","width=1050,height=550,left=150,top=200,toolbar=0,status=0,scrollbars=yes,")'>Monitoring</a>
+

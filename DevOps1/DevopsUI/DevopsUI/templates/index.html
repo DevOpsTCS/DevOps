@@ -1,0 +1,35 @@
+{% load staticfiles %}
+
+<html>
+
+<head>
+<link rel="stylesheet" href="/static/mystyle.css">
+</head>
+<body>
+<div id="parent" align="center">
+
+<div id="header">
+<h3<p>TCS<p></h3>
+</div> 
+
+
+<div id="marquee">
+<h2><marquee direction="right">Welcome to Devops Demo !!!</marquee></h2>
+</div>
+
+<div id="box">
+    {% block sidebar %}{% include "sidebar.html" %}{% endblock %}
+</div>
+<div id="box1">
+    {% block main %}{% endblock %}
+</div>
+
+
+<div id="footer">
+<p>Copyright (c) 2008</p>
+ 
+</div>
+</div>
+</body>
+</html>
+

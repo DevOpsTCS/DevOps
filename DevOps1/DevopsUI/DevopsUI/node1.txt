@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<slave>
+      <name>Unittest.4</name>
+      <description>slave</description>
+      <remoteFS>/home/tcs/jenkins/Unittest.4</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+      <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.9">
+        <host>10.190.54.98</host>
+        <port>22</port>
+        <credentialsId>65092221-d99a-4b04-ae44-3cf98045773d</credentialsId>
+        <maxNumRetries>0</maxNumRetries>
+        <retryWaitTime>0</retryWaitTime>
+      </launcher>
+      <label>testing</label>
+      <nodeProperties/>
+      <userId>anonymous</userId>
+    </slave>
+

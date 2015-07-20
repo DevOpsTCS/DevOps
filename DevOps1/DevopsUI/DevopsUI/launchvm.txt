@@ -1,0 +1,25 @@
+#!/bin/bash
+#This is a automatic dcript to launch VM'S using Kvm
+echo "deleting old vm's"
+while read line;
+do
+if [ ! "$line" ];then
+continue
+fi
+sudo virsh undefine $line
+done < vmnamelist.txt
+echo " launching vm's for running Unittests"
+vm=1
+count=1
+sudo rm -rf vmnamelist.txt
+while [ $count -le $vm  ] 
+
+do
+
+sudo virt-install --name Unittest.$count --ram 512 --force --disk path=/home/tcs/jenkins/devops/ubuntu14.img,size=10 \--network bridge=br0 --vnc --os-variant ubuntutrusty --import
+
+echo Unittest.$count >> vmnamelist.txt
+count=`expr $count + 1`
+
+done
+~     

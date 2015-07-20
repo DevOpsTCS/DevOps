@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+
+
+{% block main %}
+<style>
+table, td, th {
+    border: 1px solid black;
+    position: center;
+}
+
+th {
+    background-color: grey;
+    color: white;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    background-color: #b0e0e6;
+}
+
+#checkoutbutton {
+  width: 200px;
+  height: 40px;
+  background-color: lightgray;
+  moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  border: 3px solid grey;
+  padding: 6px;
+}
+
+#checkoutbutton:hover {opacity: 0.6; }
+
+</style>
+
+<form action="onboard">
+<div style=" display: inline-block">
+<input type="submit" value="ONBOARD VNFD" style=" display: inline-block" id="checkoutbutton"></input>
+<input type="reset" value="DELETE" style=" display: inline-block" id="checkoutbutton"></input>
+</div>
+</form>
+
+<table border="3" class="center">
+<tr>
+{% for t_value in table %}
+<th>{{ t_value }}</th>
+{% endfor %}
+</tr>
+
+{% for item1 in mylst %}
+     <tr width="90" height="30">   
+     {% for k, v in item1.items %}
+         <td width="190" height="10">{{ v }}</td>
+     
+     {% endfor %}
+  
+     </tr>
+{% endfor %}
+
+</table>
+{% endblock %}
+
+
