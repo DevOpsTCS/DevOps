@@ -1,5 +1,11 @@
+#This is for auto application deployment in jenkins Auto Application Deployment job will deploy 
+#project code from GITLAB to any VM configured at DESTINATION_IP 
+
 IN capistrano/config/deploy.rb Change the below DETAILS
 
-set :repository, "GITLAB REPO"
-set :deploy_to, "DESTRINATIONFOLDER"
-role :app, "DESTINATION_IP" # This may be the same as your web server.
+set :repository, "GITLAB REPO" #GITLAB source code path 
+set :deploy_to, "DESTRINATIONFOLDER"#Production VM Destination location
+role :app, "DESTINATION_IP"#Production VM ip
+ 
+
+
